@@ -31,9 +31,9 @@ This folder contains the **Android app** for connecting to the **XIAO nRF52840 B
 ## 📱 App Screenshots
 
 <div style="display: flex; justify-content: center; gap: 10px;"> 
-  <img src="../images/AppScreen1.jpg" alt="AppScreen1" width="30%">
-  <img src="../images/AppScreen2.jpg" alt="AppScreen2" width="30%">
-  <img src="../images/AppScreen3.jpg" alt="AppScreen3" width="30%">
+  <img src="../images/appScreen1.jpg" alt="AppScreen1" width="30%">
+  <img src="../images/appScreen2.jpg" alt="AppScreen2" width="30%">
+  <img src="../images/appScreen3.jpg" alt="AppScreen3" width="30%">
 </div>
 
 ---
