@@ -28,7 +28,7 @@ To set up the **BLE sensor firmware**, visit the [`sensor/`](sensor/) folder and
 3. **Select the Correct Board and Port**  
    Go to **Tools → Board → Seeed nRF52 mbed-enabled Boards → Seeed XIAO BLE Sense - nRF52840**.
 
-   <img src="images/instructions.png" alt="Board Selection" width="400"/>
+   <img src="Images/instructions.png" alt="Board Selection" width="400"/>
 
 4. **Upload the Firmware Sketch**  
    Open the sketch located in the `sensor/` folder and click **Upload**.
