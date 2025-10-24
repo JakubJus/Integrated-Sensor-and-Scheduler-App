@@ -1,48 +1,94 @@
-# Android App Setup – BLE Sensor
+# Integrated Sensor & Scheduler App
 
-This folder contains the **Android app** for connecting to the **XIAO nRF52840 BLE sensor**, visualizing real-time data, and managing scheduled activities.
+This project consists of two components:
 
----
+1. 🧠 **Sensor Firmware (Hardware)**  
+   Arduino-based firmware running on a **Seeed Studio XIAO nRF52840 Sense** that measures **temperature, acceleration, and gyroscope data**, and transmits it via **Bluetooth Low Energy (BLE)**.
 
-## ⚙️ Setup Instructions
-
-1. **Install Arduino Studio**  
-   Make sure you have **Arduino Studio** installed on your computer.  
-
-2. **Download Repository**  
-   - Download or clone the repository  
-   - Extract the files to a local folder
-
-3. **Open in Arduino Studio**  
-   - Open the project in Arduino Studio  
-   - It may take a while to load all files and dependencies  
-
-4. **Prepare Your Android Device**  
-   - Go to **Settings → Developer Options**  
-   - Enable **USB Debugging**  
-
-5. **Connect and Run App**  
-   - Connect your Android device via USB  
-   - Build and run the app from Android Studio  
-   - The app will detect the BLE sensor and display real-time data  
+2. 📱 **Android App (Software)**  
+   An Android application built with **Jetpack Compose** that connects to the BLE device, visualizes sensor data in real-time, and saves sessions to **Firebase** for later viewing. The application also works as a scheduler to plan activities.
 
 ---
 
-## 📱 App Screenshots
+## 📦 Repository Structure
 
-<div style="display: flex; justify-content: center; gap: 10px;"> 
-  <img src="../images/appScreen1.jpg" alt="AppScreen1" width="30%">
-  <img src="../images/appScreen2.jpg" alt="AppScreen2" width="30%">
-  <img src="../images/appScreen3.jpg" alt="AppScreen3" width="30%">
-</div>
+App-and-hardware-for-temperature-and-angle-sensor/
+├── sensor/ # Arduino firmware for the XIAO nRF52840 BLE IMU
+├── app/ # Android app to connect, visualize, and store data
+├── docs/ # Images for README setup instructions
+│ └── images/
+│ └── board_selection.png
+└── README.md # This file
 
----
-
-## 🛠️ Notes
-
-- Ensure Bluetooth is enabled on your phone  
-- The app requires **Firebase** setup to save and retrieve historical sessions  
-- Activities can be added, removed, or scheduled directly within the app  
+markdown
+Kopiera kod
 
 ---
 
+## ⚙️ How to Set It Up
+
+### 🔧 Hardware Setup
+
+To set up the **BLE sensor firmware**, visit the [`sensor/`](sensor/) folder and follow the instructions in the [`README.md`](sensor/README.md) inside.
+
+1. **Connect your XIAO nRF52840 Sense**  
+   Plug the board into your computer via USB-C.
+
+2. **Install Required Libraries in Arduino IDE**  
+   - Seeed Arduino LSM6DS3 by Seeed Studio (v2.0.5)  
+   - ArduinoBLE by Arduino (v1.3.7 or above)  
+   - Seeed nRF52 Boards by Seeed Studio (v1.1.8 or above)  
+   - Seeed nRF52 mbed-enabled Boards by Seeed Studio (v2.9.2 or above)
+
+3. **Select the Correct Board and Port**  
+   Go to **Tools → Board → Seeed nRF52 mbed-enabled Boards → Seeed XIAO BLE Sense - nRF52840**.
+
+   <img src="Images/instructions.png" alt="Board Selection" width="400"/>
+
+4. **Upload the Firmware Sketch**  
+   Open the sketch located in the `sensor/` folder and click **Upload**.
+
+5. **Power the Device**  
+   - Via USB, the device powers automatically.  
+   - **If using a battery**, you must **disconnect the Serial Communication (USB)** to avoid conflicts.
+
+The onboard LED should blink to indicate the device is active.
+
+---
+
+### 💻 Android App Setup
+
+To set up the Android application, visit the [`app/`](app/) folder and follow the instructions in the [`README.md`](app/README.md).
+
+1. **Open the Project in Android Studio**  
+   Make sure you have **Android Studio Flamingo** or newer installed.
+
+2. **Connect to the BLE Device**  
+   Enable Bluetooth on your Android device and pair with the XIAO BLE sensor.
+
+3. **View Real-Time Graphs**  
+   Navigate to the live sensor dashboard to see temperature, acceleration, and gyroscope data in real-time.
+
+4. **Manage Activities**  
+   - Add new activities to the schedule  
+   - Remove activities from the schedule  
+   - Save session data to Firebase
+
+5. **View Historical Data**  
+   Access previous sessions and plan future activities using the built-in scheduler.
+
+---
+
+## 📋 Summary
+
+| Component | Folder | Technology | Purpose |
+|----------|--------|-------------|---------|
+| 🔌 Sensor Firmware | `sensor/` | Arduino + BLE + IMU | Streams sensor data via BLE |
+| 📲 Android App | `app/` | Jetpack Compose + Firebase | Graphs & stores the data |
+
+---
+
+## 🧪 Sensor Output Example
+
+0.01,0.02,9.81,0.05,0.00,0.01,27,8
+accelX,accelY,accelZ,gyroX,gyroY,gyroZ,temp
